@@ -1,0 +1,17 @@
+import com.vmac.giphy.Deps
+import com.vmac.giphy.GiphyPlugin
+
+apply plugin: 'com.android.library'
+apply plugin: GiphyPlugin
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+    List implementationList = [
+            Deps.androidxAppCompat,
+            Deps.androidxCore
+    ]
+
+    implementation implementationList
+    implementation project(":domain")
+}

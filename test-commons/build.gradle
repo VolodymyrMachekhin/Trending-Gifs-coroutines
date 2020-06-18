@@ -1,0 +1,19 @@
+import com.vmac.giphy.Deps
+import com.vmac.giphy.Versions
+
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(":domain")
+    implementation Deps.kotlinCoroutines
+    List testDependencies = [
+            "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0",
+            "com.squareup.okhttp3:mockwebserver:$Versions.okhttpVer",
+            Deps.okhttp3,
+            "org.jetbrains.kotlinx:kotlinx-coroutines-test:$Versions.kotlinCoroutinesVer",
+            "junit:junit:4.13"
+    ]
+    api testDependencies
+}

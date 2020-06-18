@@ -1,0 +1,85 @@
+import com.vmac.giphy.Deps
+import com.vmac.giphy.Versions
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+// To disable debug obfuscation Settings -> Compiler -> Command line options -> -PdisableObfuscation
+def enableDebugObfuscation = !project.hasProperty('disableObfuscation')
+
+android {
+    compileSdkVersion Versions.compileSdkVer
+
+    defaultConfig {
+        applicationId "com.vmac.giphy"
+        minSdkVersion Versions.minSdkVer
+        targetSdkVersion Versions.targetSdkVer
+        versionCode Versions.appVerCode
+        versionName Versions.appVerName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildFeatures {
+        buildConfig = true
+        viewBinding = true
+        dataBinding = true
+        aidl = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    buildTypes {
+
+        debug {
+            debuggable true
+            minifyEnabled enableDebugObfuscation
+            shrinkResources enableDebugObfuscation
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+
+
+    kapt Deps.daggerCompiler
+    kapt Deps.glideCompiler
+
+    List implementationList = [
+            Deps.kotlinStdLib,
+            Deps.androidxAppCompat,
+            Deps.androidxConstraintlayout,
+            Deps.androidxFragment,
+            Deps.okhttp3,
+            Deps.dagger,
+            Deps.retrofit2Moshi,
+            Deps.retrofit2,
+            Deps.retrofit2Coroutines,
+            Deps.glide,
+            Deps.kotlinCoroutines,
+            Deps.kotlinCoroutinesAndroid,
+            Deps.loggingInterceptor,
+            Deps.bindingcollectionadapterRecyclerview,
+            Deps.bindingcollectionadapter
+    ]
+
+    implementation implementationList
+    implementation project(":domain")
+    implementation project(":network")
+    implementation project(":common-utils")
+
+    testImplementation project(":test-commons")
+}
