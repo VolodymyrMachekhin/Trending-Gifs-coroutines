@@ -14,9 +14,8 @@ import com.vmac.giphy.ui.adapter.GiphyListItem.DisplayGiphy
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
-class TrendingViewModel @Inject constructor(
+class TrendingViewModel(
     private val repository: GifRepository,
     private val logger: Logger,
     private val dispatchersProvider: DispatchersProvider
@@ -112,4 +111,3 @@ class TrendingViewModel @Inject constructor(
         val totalCount: Int
     )
 }
-

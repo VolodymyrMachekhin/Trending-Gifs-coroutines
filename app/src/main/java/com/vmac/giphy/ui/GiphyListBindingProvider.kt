@@ -5,12 +5,10 @@ import com.vmac.giphy.R
 import com.vmac.giphy.ui.adapter.GiphyListItem
 import me.tatarka.bindingcollectionadapter2.ItemBinding
 import me.tatarka.bindingcollectionadapter2.itembindings.OnItemBindClass
-import javax.inject.Inject
-import javax.inject.Provider
 
-class GiphyListBindingProvider @Inject constructor() : Provider<OnItemBindClass<GiphyListItem>> {
+class GiphyListBindingProvider {
 
-    override fun get(): OnItemBindClass<GiphyListItem> {
+    fun get(): OnItemBindClass<GiphyListItem> {
         return OnItemBindClass<GiphyListItem>()
             .map(GiphyListItem.DisplayGiphy::class.java) { itemBinding, _, _ ->
                 itemBinding.set(BR.item, R.layout.item_gif)

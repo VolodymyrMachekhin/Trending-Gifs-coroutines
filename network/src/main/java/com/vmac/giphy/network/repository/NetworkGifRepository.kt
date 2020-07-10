@@ -4,11 +4,9 @@ import com.vmac.giphy.domain.GifRepository
 import com.vmac.giphy.domain.coroutines.DispatchersProvider
 import com.vmac.giphy.domain.model.TrendingGifs
 import com.vmac.giphy.network.client.GiphyClient
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import javax.inject.Inject
 
-class NetworkGifRepository @Inject constructor(
+class NetworkGifRepository(
     private val client: GiphyClient,
     private val mapper: TrendingGifDtoMapper,
     private val dispatchersProvider: DispatchersProvider

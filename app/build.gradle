@@ -54,17 +54,12 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
-
-    kapt Deps.daggerCompiler
-    kapt Deps.glideCompiler
-
     List implementationList = [
             Deps.kotlinStdLib,
             Deps.androidxAppCompat,
             Deps.androidxConstraintlayout,
             Deps.androidxFragment,
             Deps.okhttp3,
-            Deps.dagger,
             Deps.retrofit2Moshi,
             Deps.retrofit2,
             Deps.retrofit2Coroutines,
@@ -73,7 +68,10 @@ dependencies {
             Deps.kotlinCoroutinesAndroid,
             Deps.loggingInterceptor,
             Deps.bindingcollectionadapterRecyclerview,
-            Deps.bindingcollectionadapter
+            Deps.bindingcollectionadapter,
+            Deps.koinCore,
+            Deps.koinAndroid,
+            Deps.koinViewModel
     ]
 
     implementation implementationList

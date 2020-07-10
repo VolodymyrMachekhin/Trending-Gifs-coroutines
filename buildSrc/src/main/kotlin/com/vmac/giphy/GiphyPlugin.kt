@@ -22,16 +22,9 @@ class GiphyPlugin : Plugin<Project> {
                 listOf(
                     Deps.kotlinStdLib,
                     Deps.kotlinCoroutines,
-                    Deps.kotlinCoroutinesAndroid,
-                    Deps.dagger
+                    Deps.kotlinCoroutinesAndroid
                 ).forEach {
                     add("implementation", it)
-                }
-
-                listOf(
-                    Deps.daggerCompiler
-                ).forEach {
-                    add("kapt", it)
                 }
             }
 

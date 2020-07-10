@@ -6,18 +6,10 @@ import com.vmac.giphy.domain.coroutines.DispatchersProviderImpl
 import com.vmac.giphy.domain.logging.Logger
 import com.vmac.giphy.ui.image.GlideImageLoader
 import com.vmac.giphy.ui.image.ImageLoader
-import dagger.Binds
-import dagger.Module
+import org.koin.dsl.module
 
-@Module
-abstract class UtilsModule {
-
-    @Binds
-    abstract fun provideLogger(loggerImpl: LoggerImpl): Logger
-
-    @Binds
-    abstract fun provideImageLoader(glideImageLoader: GlideImageLoader): ImageLoader
-
-    @Binds
-    abstract fun provideDispatchersProvider(glideImageLoader: DispatchersProviderImpl): DispatchersProvider
+val utilsModule = module {
+    single<Logger> { LoggerImpl() }
+    single<ImageLoader> { GlideImageLoader() }
+    single<DispatchersProvider> { DispatchersProviderImpl() }
 }

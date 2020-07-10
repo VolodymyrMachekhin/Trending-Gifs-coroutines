@@ -11,9 +11,8 @@ import com.vmac.giphy.common.utils.widget.doOnLayout
 import com.vmac.giphy.ui.dataBinding.AppDataBindingComponent
 import com.vmac.giphy.ui.image.ImageLoader
 import me.tatarka.bindingcollectionadapter2.BindingRecyclerViewAdapter
-import javax.inject.Inject
 
-class GiphyListAdapter @Inject constructor(
+class GiphyListAdapter(
     private val imageLoader: ImageLoader
 ) : BindingRecyclerViewAdapter<GiphyListItem>() {
 

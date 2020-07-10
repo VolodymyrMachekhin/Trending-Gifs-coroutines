@@ -1,10 +1,9 @@
 package com.vmac.giphy.domain.coroutines
 
 import kotlinx.coroutines.Dispatchers
-import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
-class DispatchersProviderImpl @Inject constructor() : DispatchersProvider {
+class DispatchersProviderImpl : DispatchersProvider {
 
     override val io: CoroutineContext get() = Dispatchers.IO
 

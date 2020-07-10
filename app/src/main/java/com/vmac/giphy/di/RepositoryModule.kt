@@ -1,15 +1,20 @@
 package com.vmac.giphy.di
 
 import com.vmac.giphy.domain.GifRepository
+import com.vmac.giphy.network.repository.GifDtoMapper
 import com.vmac.giphy.network.repository.NetworkGifRepository
-import dagger.Binds
-import dagger.Module
+import com.vmac.giphy.network.repository.TrendingGifDtoMapper
+import org.koin.dsl.module
 
-@Module
-abstract class RepositoryModule {
+val repositoryModule = module {
 
-    @Binds
-    abstract fun provideRepository(
-        networkGifRepository: NetworkGifRepository
-    ): GifRepository
+    factory { GifDtoMapper() }
+    factory { TrendingGifDtoMapper(gifDtoMapper = get()) }
+    factory<GifRepository> {
+        NetworkGifRepository(
+            client = get(),
+            mapper = get(),
+            dispatchersProvider = get()
+        )
+    }
 }

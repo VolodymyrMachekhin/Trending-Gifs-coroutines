@@ -3,9 +3,8 @@ package com.vmac.giphy.common.utils.logging
 import android.util.Log
 import com.vmac.giphy.common.utils.BuildConfig
 import com.vmac.giphy.domain.logging.Logger
-import javax.inject.Inject
 
-class LoggerImpl @Inject constructor() : Logger {
+class LoggerImpl : Logger {
 
     override fun e(throwable: Throwable?, message: String) {
         if (BuildConfig.DEBUG) {

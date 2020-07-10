@@ -4,8 +4,8 @@ import com.vmac.giphy.Versions.androidxAppCompatVer
 import com.vmac.giphy.Versions.androidxConstraintlayoutVer
 import com.vmac.giphy.Versions.androidxFragmentVer
 import com.vmac.giphy.Versions.bindingCollectionVer
-import com.vmac.giphy.Versions.daggerVer
 import com.vmac.giphy.Versions.glideVer
+import com.vmac.giphy.Versions.koinVersion
 import com.vmac.giphy.Versions.kotlinCoroutinesVer
 import com.vmac.giphy.Versions.kotlinVersion
 import com.vmac.giphy.Versions.okhttpVer
@@ -15,6 +15,7 @@ object Versions {
     val appVerCode = 1
     val appVerName = "1.0"
 
+    val koinVersion = "2.1.6"
     val kotlinVersion = "1.3.72"
     val androidGradlePluginVer = "4.0.0"
 
@@ -25,7 +26,6 @@ object Versions {
 
     val bindingCollectionVer = "3.2.0"
     val retrofitVer = "2.9.0"
-    val daggerVer = "2.28"
     val glideVer = "4.11.0"
     val okhttpVer = "4.0.0"
 
@@ -46,8 +46,6 @@ object Deps {
 
     val okhttp3 = "com.squareup.okhttp3:okhttp:$okhttpVer"
 
-    val dagger = "com.google.dagger:dagger:$daggerVer"
-
     val retrofit2 = "com.squareup.retrofit2:retrofit:$retrofitVer"
     val retrofit2Coroutines = "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2"
     val retrofit2Moshi = "com.squareup.retrofit2:converter-moshi:$retrofitVer"
@@ -65,6 +63,7 @@ object Deps {
     val bindingcollectionadapterRecyclerview =
         "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:$bindingCollectionVer"
 
-    val daggerCompiler = "com.google.dagger:dagger-compiler:$daggerVer"
-    val glideCompiler = "com.github.bumptech.glide:compiler:$glideVer"
+    val koinCore = "org.koin:koin-core:$koinVersion"
+    val koinAndroid = "org.koin:koin-android:$koinVersion"
+    val koinViewModel = "org.koin:koin-androidx-viewmodel:$koinVersion"
 }

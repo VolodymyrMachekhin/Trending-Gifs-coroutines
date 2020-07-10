@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import java.lang.ref.WeakReference
 
 @BindingAdapter("ratingColor")
 fun RatingBar.setRatingColor(@ColorRes colorRes: Int) {
@@ -32,7 +33,10 @@ fun View.postVisibleOrGone(visible: Boolean) {
 
 @BindingAdapter("onBottomReached", "onBottomReachedThreshold")
 fun RecyclerView.onBottomReached(action: () -> Unit, threshold: Int) {
-    addOnScrollListener(BottomReachedListener(threshold, action))
+    val weakView = WeakReference(this)
+    postDelayed({
+        weakView.get()?.addOnScrollListener(BottomReachedListener(threshold, action))
+    }, 1000)
 }
 
 class BottomReachedListener(

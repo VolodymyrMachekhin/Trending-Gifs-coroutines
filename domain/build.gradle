@@ -7,11 +7,8 @@ apply plugin: 'kotlin-kapt'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    kapt Deps.daggerCompiler
-
     List implementationList = [
             Deps.kotlinStdLib,
-            Deps.dagger,
             Deps.kotlinCoroutines
     ]
 

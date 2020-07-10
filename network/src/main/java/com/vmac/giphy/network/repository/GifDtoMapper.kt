@@ -7,9 +7,8 @@ import com.vmac.giphy.domain.model.ImageSize
 import com.vmac.giphy.domain.model.User
 import com.vmac.giphy.network.entity.GifDto
 import com.vmac.giphy.network.entity.ImageDto
-import javax.inject.Inject
 
-class GifDtoMapper @Inject constructor(): Mapper<GifDto, Gif>{
+class GifDtoMapper : Mapper<GifDto, Gif> {
 
     override fun map(from: GifDto): Gif {
         return Gif(

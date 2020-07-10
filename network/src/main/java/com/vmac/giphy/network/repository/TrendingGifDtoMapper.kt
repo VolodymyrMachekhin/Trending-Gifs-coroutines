@@ -3,11 +3,10 @@ package com.vmac.giphy.network.repository
 import com.vmac.giphy.domain.Mapper
 import com.vmac.giphy.domain.model.TrendingGifs
 import com.vmac.giphy.network.entity.TrendingGifsDto
-import javax.inject.Inject
 
-class TrendingGifDtoMapper @Inject constructor(
+class TrendingGifDtoMapper(
     private val gifDtoMapper: GifDtoMapper
-): Mapper<TrendingGifsDto, TrendingGifs> {
+) : Mapper<TrendingGifsDto, TrendingGifs> {
 
     override fun map(from: TrendingGifsDto): TrendingGifs {
         return TrendingGifs(

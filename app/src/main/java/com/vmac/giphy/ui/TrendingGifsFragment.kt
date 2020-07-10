@@ -4,25 +4,21 @@ import com.vmac.giphy.R
 import com.vmac.giphy.common.utils.ui.BaseFragment
 import com.vmac.giphy.databinding.FragmentTrendingBinding
 import com.vmac.giphy.ui.adapter.GiphyListAdapter
-import javax.inject.Inject
+import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class TrendingGifsFragment: BaseFragment<TrendingViewModel, FragmentTrendingBinding>(
-    layoutIdRes = R.layout.fragment_trending,
-    viewModelClass = TrendingViewModel::class.java
+class TrendingGifsFragment : BaseFragment<FragmentTrendingBinding>(
+    layoutIdRes = R.layout.fragment_trending
 ) {
 
-    @Inject
-    lateinit var adapter: GiphyListAdapter
+    val trendingViewModel: TrendingViewModel by viewModel()
 
-    @Inject
-    lateinit var bindingProvider: GiphyListBindingProvider
+    val adapter: GiphyListAdapter by inject()
 
-    override fun performInjection() {
-        MainActivity.mainComponent.inject(this)
-    }
+    val bindingProvider: GiphyListBindingProvider by inject()
 
     override fun bindingCreated(binding: FragmentTrendingBinding) {
-        binding.viewModel = viewModel
+        binding.viewModel = trendingViewModel
         binding.adapter = adapter
         binding.itemBinding = bindingProvider.get()
     }
